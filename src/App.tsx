@@ -5,7 +5,7 @@ import AnimateThree from './three/animate';
 /**
  * Entry point of the app
  *
- * @returns {JSX.Element} JSX Element
+ * @returns {JSX.Element} JSX Element.
  */
 function App(): JSX.Element {
   const sceneRef = useRef<null | HTMLDivElement>(null);
