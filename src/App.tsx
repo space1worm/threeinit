@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { ThreeScene } from './three/scene';
-import AnimateThree from './three/animate';
+import ThreeApp from './three/animate';
 
 /**
  * Entry point of the app
@@ -12,16 +12,14 @@ function App(): JSX.Element {
 
   useEffect(() => {
     if (sceneRef.current) {
-      console.log("started");
       sceneRef.current.append(ThreeScene.renderer.domElement);
       ThreeScene.setRendererSize(window.innerWidth, window.innerHeight);
-      AnimateThree.init();
+      ThreeApp.startAnimation();
     }
 
     return () => {
       sceneRef.current?.removeChild(ThreeScene.renderer.domElement);
-      AnimateThree.stopAnimation();
-      console.log("stopped");
+      ThreeApp.stopAnimation();
     }
   }, [])
 

@@ -2,32 +2,52 @@ import { BoxGeometry, Mesh, MeshBasicMaterial } from "three";
 
 import { ThreeScene } from "./scene";
 
-class Animation {
-  private animFrame: number | null;
+/**
+ * Controls ThreeJs Animations, Initializes whole threejs App.
+ */
+class ThreeJsApp {
+  private animationObserver: number | null;
   private cube: Mesh<BoxGeometry, MeshBasicMaterial>;
 
+  /**
+   * Creates a geomery, initialize ThreeJs App animation Observer.
+   */
   constructor() {
-    this.animFrame = null;
+    this.animationObserver = null;
     const geometry = new BoxGeometry(1, 1, 1);
     const material = new MeshBasicMaterial({ color: 0x00ff00 });
     this.cube = new Mesh(geometry, material);
+
+    this.init();
   }
 
-  init() {
+  /**
+   * Initilizes application, load's all of the necessary function to the app to start
+   * the threeJs application.
+   */
+  init(): void {
     this.initGeometries();
-    this.startAnimation();
   }
 
-  initGeometries() {
+  /**
+   * Loads geometries in to the scene
+   */
+  initGeometries(): void {
     ThreeScene.scene.add(this.cube);
     ThreeScene.camera.position.z = 5;
   }
 
-  startAnimation() {
+  /**
+   * Strats ThreeJs App animation
+   */
+  startAnimation(): void {
     const { scene, camera, renderer } = ThreeScene;
 
-    const animate = () => {
-      this.animFrame = requestAnimationFrame(animate);
+    /**
+     * Starts animation
+     */
+    const animate = (): void => {
+      this.animationObserver = requestAnimationFrame(animate);
 
       this.cube.rotation.x += 0.01;
       this.cube.rotation.y += 0.01;
@@ -38,10 +58,13 @@ class Animation {
     animate();
   }
 
-  stopAnimation() {
-    if (this.animFrame) cancelAnimationFrame(this.animFrame);
+  /**
+   * Stops ThreeJs App animation.
+   */
+  stopAnimation(): void {
+    if (this.animationObserver) cancelAnimationFrame(this.animationObserver);
   }
 }
 
-const AnimateThree = new Animation();
-export default AnimateThree;
+const ThreeApp = new ThreeJsApp();
+export default ThreeApp;

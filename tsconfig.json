@@ -22,10 +22,12 @@
   },
   "include": [
     "src",
+    "src/test",
     "./lint-staged.config.js",
     "./vite.config.ts",
     "./tailwind.config.cjs",
-    "./postcss.config.cjs"
+    "./postcss.config.cjs",
+    "src/test"
   ],
   "references": [
     {
