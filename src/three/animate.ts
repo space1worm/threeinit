@@ -30,7 +30,7 @@ class ThreeJsApp {
   }
 
   /**
-   * Loads geometries in to the scene
+   * Loads geometries in to the scene.
    */
   initGeometries(): void {
     ThreeScene.scene.add(this.cube);
