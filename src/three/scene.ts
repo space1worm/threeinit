@@ -7,5 +7,6 @@ export class ThreeScene {
 
   static setRendererSize(width: number, height: number) {
     ThreeScene.renderer.setSize(width, height);
+    console.log("hi");
   }
 }
