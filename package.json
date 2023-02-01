@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "lint:staged": "lint-staged",
     "test": "vitest",
     "dev": "vite",
     "build": "tsc && vite build",
@@ -50,6 +49,7 @@
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
+      "tsc --skipLibCheck --noEmit",
       "eslint",
       "prettier --write"
     ]
