@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { animate, stopAnimation, rendererDomElement } from './scene';
+import { ThreeScene } from './three/scene';
+import AnimateThree from './three/animate';
 
 /**
  * Entry point of the app
@@ -12,18 +13,19 @@ function App(): JSX.Element {
   useEffect(() => {
     if (sceneRef.current) {
       console.log("started");
-      sceneRef.current.append(rendererDomElement);
-      animate();
+      sceneRef.current.append(ThreeScene.renderer.domElement);
+      ThreeScene.setRendererSize(window.innerWidth, window.innerHeight);
+      AnimateThree.init();
     }
 
     return () => {
-      sceneRef.current?.removeChild(rendererDomElement);
-      stopAnimation();
+      sceneRef.current?.removeChild(ThreeScene.renderer.domElement);
+      AnimateThree.stopAnimation();
       console.log("stopped");
     }
   }, [])
 
-  return <div className='bg-black' ref={sceneRef}>
+  return <div className='bg-black h-screen' ref={sceneRef}>
     <h1 className='font-bold text-white text-md'>Hello</h1>
   </div>
 }
