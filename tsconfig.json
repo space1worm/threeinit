@@ -21,9 +21,8 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src",
-    "src/test",
-    "./lint-staged.config.js",
+    "./src",
+    "/src/test",
     "./vite.config.ts",
     "./tailwind.config.cjs",
     "./postcss.config.cjs",

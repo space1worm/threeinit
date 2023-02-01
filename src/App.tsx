@@ -1,6 +1,4 @@
-import { useEffect, useRef } from 'react';
-import { ThreeScene } from './three/scene';
-import ThreeApp from './three/animate';
+import ThreeCanvas from "./components/ThreeCanvas.component";
 
 /**
  * Entry point of the app
@@ -8,24 +6,11 @@ import ThreeApp from './three/animate';
  * @returns {JSX.Element} JSX Element.
  */
 function App(): JSX.Element {
-  const sceneRef = useRef<null | HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (sceneRef.current) {
-      sceneRef.current.append(ThreeScene.renderer.domElement);
-      ThreeScene.setRendererSize(window.innerWidth, window.innerHeight);
-      ThreeApp.startAnimation();
-    }
-
-    return () => {
-      sceneRef.current?.removeChild(ThreeScene.renderer.domElement);
-      ThreeApp.stopAnimation();
-    }
-  }, [])
-
-  return <div className='bg-black h-screen' ref={sceneRef}>
-    <h1 className='font-bold text-white text-md'>Hello</h1>
-  </div>
+  return (
+    <div className="bg-black h-screen">
+      <ThreeCanvas />
+    </div>
+  );
 }
 
-export default App
+export default App;

@@ -1,11 +1,11 @@
 import { BoxGeometry, Mesh, MeshBasicMaterial } from "three";
 
-import { ThreeScene } from "./scene";
+import ThreeScene from "./scene";
 
 /**
  * Controls ThreeJs Animations, Initializes whole threejs App.
  */
-class ThreeJsApp {
+class AnimateApplication {
   private animationObserver: number | null;
   private cube: Mesh<BoxGeometry, MeshBasicMaterial>;
 
@@ -34,7 +34,6 @@ class ThreeJsApp {
    */
   initGeometries(): void {
     ThreeScene.scene.add(this.cube);
-    ThreeScene.camera.position.z = 5;
   }
 
   /**
@@ -66,5 +65,5 @@ class ThreeJsApp {
   }
 }
 
-const ThreeApp = new ThreeJsApp();
-export default ThreeApp;
+const AnimateThreeApp = new AnimateApplication();
+export default AnimateThreeApp;
