@@ -43,6 +43,11 @@
     "vite": "^4.0.0",
     "vitest": "^0.28.3"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.{ts,tsx}": [
       "npm run lint:staged"
