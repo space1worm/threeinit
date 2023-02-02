@@ -1,19 +1,11 @@
-import AppCamera from "./camera";
-import AppRenderer from "./renderer";
-import AppAnimation from "./animation";
-import AppListeners from "./listeners";
+import AppStore from "./appStore";
 
-import { orbitControl } from "../utils/controls";
 /**
- *
+ * Init
  */
 export default class InitApp {
   private readonly container: HTMLDivElement;
-  private cameraSettings: AppCamera;
-  private rendererSettings: AppRenderer;
-  private listenersSettings: AppListeners;
-  private animationSettings: AppAnimation;
-
+  appStore: AppStore;
   /**
    * Get container to append ThreeJs canvas in it.
    *
@@ -21,10 +13,7 @@ export default class InitApp {
    */
   constructor(parent: HTMLDivElement) {
     this.container = parent;
-    this.cameraSettings = AppCamera.getInstance();
-    this.rendererSettings = AppRenderer.getInstance();
-    this.listenersSettings = AppListeners.getInstance();
-    this.animationSettings = AppAnimation.getInstance();
+    this.appStore = AppStore.getInstance();
   }
 
   /**
@@ -33,63 +22,67 @@ export default class InitApp {
   init(): void {
     this.prepareContainer();
     this.prepareRenderer();
-    this.prepareCameraPosition();
+    this.prepareCamera();
     this.prepareControls();
     this.applyEventListeners();
-    this.animationSettings.startAnimation();
+    this.appStore.animationSettings.startAnimation();
   }
 
   /**
    * Removes application from the dom.
    */
   destroy(): void {
-    this.animationSettings.stopAnimation();
+    this.appStore.animationSettings.stopAnimation();
     this.removeEventListeners();
-    this.container.removeChild(this.rendererSettings.renderer.domElement);
+    this.container.removeChild(this.appStore.rendererSettings.renderer.domElement);
   }
 
   /**
    * Update scene dimensions on window resize height/width
    */
   private applyEventListeners(): void {
-    this.listenersSettings.applyListeners(this.container);
+    this.appStore.listenersSettings.applyListeners(this.container);
   }
 
   /**
    * Remove scene dimensions on window resize height/width
    */
   private removeEventListeners(): void {
-    this.listenersSettings.removeListeners(this.container);
+    this.appStore.listenersSettings.removeListeners(this.container);
   }
 
   /**
    * applies canvas to the app
    */
   private prepareContainer(): void {
-    this.container.append(this.rendererSettings.renderer.domElement);
+    this.container.append(this.appStore.rendererSettings.renderer.domElement);
   }
 
   /**
    * Configures renderer settings
    */
   private prepareRenderer(): void {
-    this.rendererSettings.setRendererSize(this.container.offsetWidth, this.container.offsetHeight);
-    this.rendererSettings.setPixelRatio(window.devicePixelRatio);
-    this.rendererSettings.renderer.localClippingEnabled = false;
+    this.appStore.rendererSettings.setRendererSize(this.container.offsetWidth, this.container.offsetHeight);
+    this.appStore.rendererSettings.setPixelRatio(window.devicePixelRatio);
+    this.appStore.rendererSettings.renderer.localClippingEnabled = false;
   }
 
   /**
    * Configures camera's position
    */
-  private prepareCameraPosition(): void {
-    this.cameraSettings.camera.position.z = 5;
+  private prepareCamera(): void {
+    this.appStore.cameraSettings.camera.position.z = 5;
+    this.appStore.cameraSettings.updateFOV(this.container.offsetWidth / this.container.offsetHeight);
   }
 
   /**
    * Applying control method
    */
   private prepareControls(): void {
-    const controls = orbitControl(this.cameraSettings.camera, this.rendererSettings.renderer.domElement);
+    const controls = this.appStore.controlsSettings.getOrbitControls(
+      this.appStore.cameraSettings.camera,
+      this.appStore.rendererSettings.renderer.domElement,
+    );
     controls.autoRotate = true;
     controls.update();
   }

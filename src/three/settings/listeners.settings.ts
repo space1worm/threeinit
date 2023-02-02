@@ -1,6 +1,6 @@
-import AppCamera from "./camera";
-import AppRenderer from "./renderer";
-import AppScene from "./scene";
+import AppCamera from "./camera.settings";
+import AppRenderer from "./renderer.settings";
+import AppScene from "./scene.settings";
 
 /**
  * Controls all event listeners which is related to three App.
@@ -57,12 +57,22 @@ export default class AppListeners {
   };
 
   /**
+   * Encapsulates the data and pass it to down onWindowResize function
+   *
+   * @param {HTMLDivElement} container Parent of the canvas
+   */
+  private factory = (container: HTMLDivElement): void => {
+    const [width, height] = [container.offsetWidth, container.offsetHeight];
+    this.onWindowResize(width, height);
+  };
+
+  /**
    * Update scene dimensions on window resize height/width
    *
    * @param {HTMLDivElement} container Parent of the canvas
    */
   private applyEventListeners(container: HTMLDivElement): void {
-    window.addEventListener("resize", this.onWindowResize.bind(null, container.offsetWidth, container.offsetHeight));
+    window.addEventListener("resize", this.factory.bind(null, container));
   }
 
   /**
@@ -71,6 +81,6 @@ export default class AppListeners {
    * @param {HTMLDivElement} container Parent of the canvas
    */
   private removeEventListeners(container: HTMLDivElement): void {
-    window.removeEventListener("resize", this.onWindowResize.bind(null, container.offsetWidth, container.offsetHeight));
+    window.removeEventListener("resize", this.factory.bind(null, container));
   }
 }

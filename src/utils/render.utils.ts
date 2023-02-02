@@ -1,6 +1,6 @@
-import AppCamera from "../three/camera";
-import AppRenderer from "../three/renderer";
-import AppScene from "../three/scene";
+import AppCamera from "../three/settings/camera.settings";
+import AppRenderer from "../three/settings/renderer.settings";
+import AppScene from "../three/settings/scene.settings";
 
 const rendererSettings = AppRenderer.getInstance();
 const cameraSettings = AppCamera.getInstance();

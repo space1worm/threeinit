@@ -1,7 +1,7 @@
 import { BoxGeometry, MeshBasicMaterial, Mesh } from "three";
 
-import AppScene from "./scene";
-import render from "../utils/render";
+import AppScene from "./scene.settings";
+import render from "../../utils/render.utils";
 
 /**
  *

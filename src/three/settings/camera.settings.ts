@@ -1,7 +1,7 @@
 import { OrthographicCamera, PerspectiveCamera, Vector3, Spherical } from "three";
 
-import { perspectiveCamera, orthographicCamera } from "../utils/cameras";
-import { CameraVariations } from "../app.types";
+import { perspectiveCamera, orthographicCamera } from "../../utils/camera.utils";
+import { CameraVariations } from "../../app.types";
 
 /**
  * Controls application's camera.
