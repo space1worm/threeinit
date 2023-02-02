@@ -1,6 +1,7 @@
 import { useRef, useEffect } from "react";
 
-import InitApp from "../three/init";
+// import InitApp from "../three1/init";
+import InitApp from "../three";
 
 /**
  * Container of the threejs Scene

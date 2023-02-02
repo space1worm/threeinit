@@ -1,28 +1,34 @@
-import { Scene, PerspectiveCamera, WebGLRenderer } from "three";
+import { Scene } from "three";
 
 /**
- * Controls scene camera and renderer of the application.
+ * Controls applications scene.
  */
-export default class ThreeScene {
-  static scene = new Scene();
-  static camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  static renderer = new WebGLRenderer({ antialias: true, alpha: true });
-
+export default class AppScene {
+  private static isntance: AppScene;
+  scene: Scene;
   /**
-   * Resize's canvas based of the container's width/height.
-   *
-   * @param {number} width of the container
-   * @param {number} height of the container
+   * init scnene
    */
-  static setRendererSize(width: number, height: number): void {
-    ThreeScene.renderer.setSize(width, height);
+  private constructor() {
+    this.scene = new Scene();
   }
 
   /**
-   * Singelton, this class should't be initialized and in application
-   * there should be only 1 camera renderer and scene.
+   * Singelton
+   *
+   * @returns {AppScene} AppScene class
    */
-  private constructor() {
-    // do nothing
+  static getInstance(): AppScene {
+    if (AppScene.isntance) return this.isntance;
+
+    AppScene.isntance = new AppScene();
+    return this.isntance;
+  }
+
+  /**
+   * Updates dimensions of scene on window resize
+   */
+  public onWindowResize(): void {
+    this.scene.updateMatrix();
   }
 }
