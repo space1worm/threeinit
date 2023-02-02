@@ -1,6 +1,6 @@
 import ThreeScene from "./scene";
 import AnimateThreeApp from "./animate";
-import ThreeControls from "./controls";
+import { orbitControl } from "./controls";
 
 //TODO Modify this class as a singelton.
 
@@ -90,7 +90,7 @@ export default class InitApp {
    * Applying control method
    */
   private prepareControls(): void {
-    const controls = ThreeControls.orbitControl();
+    const controls = orbitControl(ThreeScene.camera, ThreeScene.renderer.domElement);
     controls.autoRotate = true;
     controls.update();
   }

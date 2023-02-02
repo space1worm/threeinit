@@ -1,30 +1,23 @@
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { FlyControls } from "three/examples/jsm/controls/FlyControls";
-
-import ThreeScene from "./scene";
+import { Camera } from "three";
 
 /**
- * Provides different type of controls of threeJs
+ * returns control type
+ *
+ * @param {Camera} camera camera
+ * @param {HTMLElement} domElement domElement
+ * @returns {OrbitControls} threeJs controller type
  */
-export default class ThreeControls {
-  /**
-   * @returns {OrbitControls} threeJs controller type
-   */
-  static orbitControl(): OrbitControls {
-    return new OrbitControls(ThreeScene.camera, ThreeScene.renderer.domElement);
-  }
+export const orbitControl = (camera: Camera, domElement: HTMLElement | undefined): OrbitControls =>
+  new OrbitControls(camera, domElement);
 
-  /**
-   * @returns {FlyControls} threeJs controller type
-   */
-  static flyControl(): FlyControls {
-    return new FlyControls(ThreeScene.camera, ThreeScene.renderer.domElement);
-  }
-
-  /**
-   * Singelton Class
-   */
-  private constructor() {
-    // do nothing
-  }
-}
+/**
+ * returns control type
+ *
+ * @param {Camera} camera camera
+ * @param {HTMLElement} domElement domElement
+ * @returns {FlyControls} threeJs controller type
+ */
+export const flyControl = (camera: Camera, domElement: HTMLElement | undefined): FlyControls =>
+  new FlyControls(camera, domElement);
