@@ -1,10 +1,6 @@
-import AppCamera from "../three/settings/camera.settings";
-import AppRenderer from "../three/settings/renderer.settings";
-import AppScene from "../three/settings/scene.settings";
-
-const rendererSettings = AppRenderer.getInstance();
-const cameraSettings = AppCamera.getInstance();
-const sceneSettings = AppScene.getInstance();
+import rendererSettings from "../three/settings/renderer.settings";
+import sceneSettings from "../three/settings/scene.settings";
+import cameraSettings from "../three/settings/camera.settings";
 
 /**
  * Provides renderer function of the app

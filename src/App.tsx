@@ -1,4 +1,5 @@
-import ThreeCanvas from "./components/ThreeCanvas.component";
+import ThreeCanvas from "./components/threeCanvas.component";
+import Navigation from "./components/navigation.component";
 
 /**
  * Entry point of the app
@@ -8,6 +9,7 @@ import ThreeCanvas from "./components/ThreeCanvas.component";
 function App(): JSX.Element {
   return (
     <div className="bg-black h-screen">
+      <Navigation />
       <ThreeCanvas />
     </div>
   );

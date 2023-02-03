@@ -5,7 +5,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 /**
  *
  */
-export default class AppControls {
+class AppControls {
   private static instance: AppControls;
   control: OrbitControls | FlyControls | null = null;
 
@@ -74,3 +74,6 @@ export default class AppControls {
     if (this.control) this.control.dispose();
   }
 }
+
+const controlSettings = AppControls.getInstance();
+export default controlSettings;

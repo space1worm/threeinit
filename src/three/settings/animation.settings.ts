@@ -1,12 +1,12 @@
 import { BoxGeometry, MeshBasicMaterial, Mesh } from "three";
 
-import AppScene from "./scene.settings";
+import Settings from "../settings";
 import render from "../../utils/render.utils";
 
 /**
- *
+ * Controls animation of the app
  */
-export default class AppAnimation {
+class AppAnimation {
   private static instance: AppAnimation;
   private animationObserver: number | null;
   cube: Mesh;
@@ -20,8 +20,13 @@ export default class AppAnimation {
     const geometry = new BoxGeometry(1, 1, 1);
     const material = new MeshBasicMaterial({ color: 0x00ff00 });
     this.cube = new Mesh(geometry, material);
+  }
 
-    AppScene.getInstance().scene.add(this.cube);
+  /**
+   *
+   */
+  init(): void {
+    Settings.sceneSettings.scene.add(this.cube);
   }
 
   /**
@@ -40,6 +45,7 @@ export default class AppAnimation {
    * Strats ThreeJs  animation
    */
   public startAnimation(): void {
+    this.init();
     /**
      * function which triggers animation frames to render the scene on each frame.
      */
@@ -62,3 +68,6 @@ export default class AppAnimation {
     if (this.animationObserver) cancelAnimationFrame(this.animationObserver);
   }
 }
+
+const animationSettings = AppAnimation.getInstance();
+export default animationSettings;

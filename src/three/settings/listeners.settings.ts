@@ -1,11 +1,8 @@
-import AppCamera from "./camera.settings";
-import AppRenderer from "./renderer.settings";
-import AppScene from "./scene.settings";
-
+import Settings from "../settings";
 /**
  * Controls all event listeners which is related to three App.
  */
-export default class AppListeners {
+class AppListeners {
   private static instance: AppListeners;
   /**
    * Singelton
@@ -51,9 +48,7 @@ export default class AppListeners {
    * @param {number} offsetHeight height
    */
   private onWindowResize = (offsetWidth: number, offsetHeight: number): void => {
-    AppRenderer.getInstance().onWindowResize(offsetWidth, offsetHeight);
-    AppCamera.getInstance().onWindowResize(offsetWidth / offsetHeight);
-    AppScene.getInstance().onWindowResize();
+    Settings.onWindowResize(offsetWidth, offsetHeight);
   };
 
   /**
@@ -62,8 +57,8 @@ export default class AppListeners {
    * @param {HTMLDivElement} container Parent of the canvas
    */
   private factory = (container: HTMLDivElement): void => {
-    const [width, height] = [container.offsetWidth, container.offsetHeight];
-    this.onWindowResize(width, height);
+    const [offsetWidth, offsetHeight] = [container.offsetWidth, container.offsetHeight];
+    this.onWindowResize(offsetWidth, offsetHeight);
   };
 
   /**
@@ -84,3 +79,6 @@ export default class AppListeners {
     window.removeEventListener("resize", this.factory.bind(null, container));
   }
 }
+
+const listenerSettings = AppListeners.getInstance();
+export default listenerSettings;

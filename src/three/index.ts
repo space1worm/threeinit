@@ -1,11 +1,12 @@
-import AppStore from "./appStore";
+import Settings from "./settings";
+import loader from "./geometry-loader";
+import { ambientLight, directionalLight } from "../utils/lights.utils";
 
 /**
  * Init
  */
 export default class InitApp {
   private readonly container: HTMLDivElement;
-  appStore: AppStore;
   /**
    * Get container to append ThreeJs canvas in it.
    *
@@ -13,7 +14,6 @@ export default class InitApp {
    */
   constructor(parent: HTMLDivElement) {
     this.container = parent;
-    this.appStore = AppStore.getInstance();
   }
 
   /**
@@ -25,65 +25,78 @@ export default class InitApp {
     this.prepareCamera();
     this.prepareControls();
     this.applyEventListeners();
-    this.appStore.animationSettings.startAnimation();
+    this.preapreLights();
+    Settings.animationSettings.startAnimation();
+    loader.loadGeomtry("test");
   }
 
   /**
    * Removes application from the dom.
    */
   destroy(): void {
-    this.appStore.animationSettings.stopAnimation();
+    Settings.animationSettings.stopAnimation();
     this.removeEventListeners();
-    this.container.removeChild(this.appStore.rendererSettings.renderer.domElement);
+    this.container.removeChild(Settings.rendererSettings.renderer.domElement);
   }
 
   /**
    * Update scene dimensions on window resize height/width
    */
   private applyEventListeners(): void {
-    this.appStore.listenersSettings.applyListeners(this.container);
+    Settings.listenersSettings.applyListeners(this.container);
   }
 
   /**
    * Remove scene dimensions on window resize height/width
    */
   private removeEventListeners(): void {
-    this.appStore.listenersSettings.removeListeners(this.container);
+    Settings.listenersSettings.removeListeners(this.container);
   }
 
   /**
    * applies canvas to the app
    */
   private prepareContainer(): void {
-    this.container.append(this.appStore.rendererSettings.renderer.domElement);
+    this.container.append(Settings.rendererSettings.renderer.domElement);
   }
 
   /**
    * Configures renderer settings
    */
   private prepareRenderer(): void {
-    this.appStore.rendererSettings.setRendererSize(this.container.offsetWidth, this.container.offsetHeight);
-    this.appStore.rendererSettings.setPixelRatio(window.devicePixelRatio);
-    this.appStore.rendererSettings.renderer.localClippingEnabled = false;
+    Settings.rendererSettings.setRendererSize(this.container.offsetWidth, this.container.offsetHeight);
+    Settings.rendererSettings.setPixelRatio(window.devicePixelRatio);
+    Settings.rendererSettings.renderer.localClippingEnabled = false;
   }
 
   /**
    * Configures camera's position
    */
   private prepareCamera(): void {
-    this.appStore.cameraSettings.camera.position.z = 5;
-    this.appStore.cameraSettings.updateFOV(this.container.offsetWidth / this.container.offsetHeight);
+    Settings.cameraSettings.camera.position.z = 5;
+    Settings.cameraSettings.updateFOV(this.container.offsetWidth / this.container.offsetHeight);
   }
 
   /**
    * Applying control method
    */
   private prepareControls(): void {
-    const controls = this.appStore.controlsSettings.getOrbitControls(
-      this.appStore.cameraSettings.camera,
-      this.appStore.rendererSettings.renderer.domElement,
+    const controls = Settings.controlsSettings.getOrbitControls(
+      Settings.cameraSettings.camera,
+      Settings.rendererSettings.renderer.domElement,
     );
     controls.autoRotate = true;
     controls.update();
+  }
+
+  /**
+   *
+   */
+  private preapreLights(): void {
+    const ambLight = ambientLight("#ffffff", 0.6);
+    const dirLight = directionalLight("#ffffff", 0.45);
+
+    Settings.sceneSettings.scene.add(ambLight);
+    Settings.sceneSettings.scene.add(dirLight);
   }
 }

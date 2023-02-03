@@ -6,7 +6,7 @@ import { CameraVariations } from "../../app.types";
 /**
  * Controls application's camera.
  */
-export default class AppCamera {
+class AppCamera {
   static instance: AppCamera;
   camera: PerspectiveCamera | OrthographicCamera;
 
@@ -103,3 +103,6 @@ export default class AppCamera {
     this.updateFOV(fov);
   };
 }
+
+const cameraSettings = AppCamera.getInstance();
+export default cameraSettings;

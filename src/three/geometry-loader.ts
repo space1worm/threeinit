@@ -1,8 +1,11 @@
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+
+import Settings from "./settings";
+
 /**
  *
  */
-export default class GeometryLoader {
+class GeometryLoader {
   private static instance: GeometryLoader;
   private loader = new GLTFLoader();
   private path: string;
@@ -28,8 +31,32 @@ export default class GeometryLoader {
     return GeometryLoader.instance;
   }
 
-  //   loadGeomtry(geometryName: string): void {}
+  /**
+   *
+   * @param geometryName
+   * @param wireframe
+   * @param opacity
+   */
+  loadGeomtry(geometryName: string): void {
+    this.loader.load(this.path + geometryName + ".glb", (glb) => {
+      const geometry = glb.scene;
+
+      geometry.traverse((childGeometry) => {
+        console.log(childGeometry);
+        // if (childGeometry.isMesh) {
+        //   childGeometry.material.metalness = null;
+        //   childGeometry.material.transparent = true;
+        // }
+      });
+
+      Settings.sceneSettings.scene.add(geometry);
+    });
+  }
+
   //   loadGeometries(geometriesName: string[]): void {}
   //   removeGeometry(geoName: string): void {}
   //   removeGeometries(geometriesName: string[]): void {}
 }
+
+const loader = GeometryLoader.getInstance("/src/geometries/");
+export default loader;

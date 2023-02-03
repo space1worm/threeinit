@@ -3,7 +3,7 @@ import { Scene } from "three";
 /**
  * Controls applications scene.
  */
-export default class AppScene {
+class AppScene {
   private static isntance: AppScene;
   scene: Scene;
   /**
@@ -32,3 +32,6 @@ export default class AppScene {
     this.scene.updateMatrix();
   }
 }
+
+const sceneSettings = AppScene.getInstance();
+export default sceneSettings;

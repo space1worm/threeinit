@@ -3,7 +3,7 @@ import { WebGLRenderer } from "three";
 /**
  * Controls Application's renderer.
  */
-export default class AppRenderer {
+class AppRenderer {
   private static instance: AppRenderer;
   renderer: WebGLRenderer;
   /**
@@ -54,3 +54,6 @@ export default class AppRenderer {
     this.setRendererSize(offsetWidth, offsetHeight);
   };
 }
+
+const rendererSettings = AppRenderer.getInstance();
+export default rendererSettings;

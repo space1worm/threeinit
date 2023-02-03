@@ -11,3 +11,13 @@
 body {
   backgroundcolor: black;
 }
+
+@layer components {
+  .icon {
+    @apply w-6 h-6 text-light hover:text-blue;
+  }
+
+  .focus {
+    @apply text-blue;
+  }
+}
