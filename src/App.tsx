@@ -1,5 +1,5 @@
-import ThreeCanvas from "./components/threeCanvas.component";
-import Navigation from "./components/navigation.component";
+import ThreeCanvas from "./components/ThreeCanvas.component";
+import Navigation from "./components/navigation/Navigation.component";
 
 /**
  * Entry point of the app

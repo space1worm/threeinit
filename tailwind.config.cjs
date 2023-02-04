@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   theme: {
     extend: {
+      variants: {
+        absolute: [],
+      },
       colors: {
         dark: "#212529",
         light: "#dfe6e9",
