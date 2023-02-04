@@ -3,10 +3,12 @@ interface Props extends React.HTMLAttributes<HTMLButtonElement> {
 }
 
 /**
+ * A button component with an SVG icon
  *
- * @param root0
- * @param root0.Icon
- * @returns {JSX.Element} menuIcon
+ * @param {Props} props - The properties for the component
+ * @param {React.FunctionComponent<React.SVGProps<SVGSVGElement>>} props.Icon - The SVG icon component to be rendered in the button
+ * @param {React.HTMLAttributes<HTMLButtonElement>} [props.other] - Additional HTML attributes to be passed to the button element
+ * @returns {JSX.Element} A React component that displays a button with an SVG icon
  */
 export default function MenuIcon({ Icon, ...other }: Props): JSX.Element {
   return (

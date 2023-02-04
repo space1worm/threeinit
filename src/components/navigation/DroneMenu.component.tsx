@@ -10,7 +10,9 @@ import MenuIcon from "./MenuIcon.component";
 import MenuDropdown from "./MenuDropdown.component";
 
 /**
+ * Provides Different drone modes
  *
+ * @returns {JSX.Element} ReactElement
  */
 export default function DroneMenu(): JSX.Element {
   return (

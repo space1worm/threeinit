@@ -41,13 +41,12 @@ class GeometryLoader {
     this.loader.load(this.path + geometryName + ".glb", (glb) => {
       const geometry = glb.scene;
 
-      geometry.traverse((childGeometry) => {
-        console.log(childGeometry);
-        // if (childGeometry.isMesh) {
-        //   childGeometry.material.metalness = null;
-        //   childGeometry.material.transparent = true;
-        // }
-      });
+      // geometry.traverse((childGeometry) => {
+      //   // if (childGeometry.isMesh) {
+      //   //   childGeometry.material.metalness = null;
+      //   //   childGeometry.material.transparent = true;
+      //   // }
+      // });
 
       Settings.sceneSettings.scene.add(geometry);
     });

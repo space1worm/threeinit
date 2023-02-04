@@ -4,7 +4,9 @@ import MenuIcon from "./MenuIcon.component";
 import { ReactComponent as WaterDropIcon } from "../../assets/svg/water-drop.svg";
 
 /**
+ * Provides functionality which controls opacity of geometries
  *
+ * @returns {JSX.Element} ReactElemet
  */
 export default function OpacirtyMenu(): JSX.Element {
   return (

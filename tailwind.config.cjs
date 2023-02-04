@@ -3,8 +3,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   theme: {
     extend: {
-      variants: {
-        absolute: [],
+      variants: {},
+      fontFamily: {
+        custom: ["Poppins", "sans-serif"],
       },
       colors: {
         dark: "#212529",

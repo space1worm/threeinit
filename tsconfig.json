@@ -22,8 +22,8 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "./src",
-    "./types.d.ts",
+    "src",
+    "src/types.d.ts",
     "./vite.config.ts",
     "./tailwind.config.cjs",
     "./postcss.config.cjs",

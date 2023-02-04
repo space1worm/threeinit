@@ -6,7 +6,9 @@ import MenuIcon from "./MenuIcon.component";
 import MenuDropdown from "./MenuDropdown.component";
 
 /**
+ * Provides different views of the scene
  *
+ * @returns {JSX.Element} ReactElement
  */
 export default function CameraViewMenu(): JSX.Element {
   return (

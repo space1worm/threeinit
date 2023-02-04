@@ -3,10 +3,12 @@ interface Props extends React.HTMLAttributes<HTMLElement> {
 }
 
 /**
+ * Wrapper function for TOP navigation menu dropdown
  *
- * @param root0
- * @param root0.children
- * @param root0.className
+ * @param {Props} props - The properties for the component
+ * @param {React.ReactNode | React.ReactNode[]} props.children - The children elements to be rendered inside the dropdown
+ * @param {string} [props.className] - The class name for custom styling
+ * @returns {JSX.Element} A React component that displays a dropdown menu
  */
 export default function MenuDropdown({ children, className }: Props): JSX.Element {
   return (

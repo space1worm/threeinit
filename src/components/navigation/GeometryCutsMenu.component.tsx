@@ -8,7 +8,9 @@ import MenuIcon from "./MenuIcon.component";
 import MenuDropdown from "./MenuDropdown.component";
 
 /**
+ * Provides different types of functionality for geometry cutting
  *
+ * @returns {JSX.Element} ReactElement
  */
 export default function GeometryCutsMenu(): JSX.Element {
   return (
