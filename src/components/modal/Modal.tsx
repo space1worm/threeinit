@@ -41,12 +41,13 @@ export default function Modal({ show, onClose, title, children }: Props): JSX.El
   if (!show) return <></>;
 
   return createPortal(
-    <Draggable nodeRef={nodeRef} bounds="parent">
+    <Draggable nodeRef={nodeRef} bounds="parent" handle=".handle">
       <div ref={nodeRef} className="modal text-white">
         <div className="w-full">
-          <div className="shadow-md p-2 flex justify-between items-center cursor-move">
-            <h4 className="uppercase font-medium text-base">{title}</h4>
-            <XMarkIcon className="h-6 w-6 cursor-pointer" onClick={onClose} />
+          {/* do not remove class 'handle' since it's used by draggable element, which means that drag events will only triggered on elements which will have handle class */}
+          <div className="handle shadow-md p-2 flex justify-between items-center cursor-move">
+            <h4 className="uppercase font-medium text-base pl-2">{title}</h4>
+            <XMarkIcon className="h-8 w-8 cursor-pointer pr-2" onClick={onClose} />
           </div>
           <div className="modal-body p-2">{children}</div>
         </div>

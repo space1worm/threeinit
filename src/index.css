@@ -15,6 +15,19 @@ body {
   overflow-y: hidden;
 }
 
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper::after {
+  content: "▼";
+  font-size: 0.52rem;
+  top: 55%;
+  right: 3%;
+  transform: translate(-50%, 50%);
+  position: absolute;
+}
+
 @layer base {
   html {
     font-family: "Poppins", sans-serif;
@@ -27,7 +40,7 @@ body {
   }
 
   .modal {
-    @apply fixed w-64 rounded-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-dark flex;
+    @apply fixed min-w-[256px] rounded-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-dark flex;
   }
 
   .focus {

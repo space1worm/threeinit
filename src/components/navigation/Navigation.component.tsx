@@ -22,7 +22,7 @@ export default function Navigation(): JSX.Element {
     <div className="flex justify-center items-center top-0 w-full z-50">
       <nav className="flex items-center pt-2 pb-2 pl-4 pr-4 rounded-sm bg-dark gap-4 w-auto overflow-x-auto">
         <div className="uppercase font-medium text-light cursor-pointer">
-          <h1 className="tracking-widest text-lg">
+          <h1 className="tracking-widest text-lg select-none">
             <span className="text-blue">t</span>core
           </h1>
         </div>
