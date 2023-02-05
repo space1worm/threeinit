@@ -30,7 +30,7 @@ export default function SettingsModal({ show, onClose }: Props): JSX.Element {
   const toggleHandler = (): void => setDropDown(!dropDown);
 
   return (
-    <Modal title="test" show={show} onClose={onClose}>
+    <Modal title="settings" show={show} onClose={onClose}>
       <div className="w-full shadow-md rounded p-1">
         <SettingsTitle title="Scene" show={dropDown} onClose={toggleHandler} />
         <SettingsDropdown show={dropDown}>

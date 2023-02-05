@@ -23,7 +23,7 @@ class AppAnimation {
   }
 
   /**
-   *
+   * Temporary
    */
   init(): void {
     Settings.sceneSettings.scene.add(this.cube);
