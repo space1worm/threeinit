@@ -3,7 +3,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import Settings from "./settings";
 
 /**
- *
+ * Test
  */
 class GeometryLoader {
   private static instance: GeometryLoader;
