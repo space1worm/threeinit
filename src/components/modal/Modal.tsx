@@ -13,12 +13,16 @@ interface Props {
 }
 
 /**
- *
- * @param root0
- * @param root0.show
- * @param root0.onClose
- * @param root0.title
- * @param root0.children
+ 
+A modal component that can be displayed with a title and content, and be closed either by clicking a close icon or pressing the escape key.
+The modal is also draggable by its title.
+ 
+ * @param {object} props - The properties for the component.
+ * @param {boolean} props.show - Determines whether the modal should be displayed or not.
+ * @param {() => void} props.onClose - The function that is called when the modal is closed.
+ * @param {string} props.title - The title for the modal.
+ * @param {React.ReactElement | React.ReactElement[]} props.children - The content for the modal.
+ * @returns {JSX.Element} ReactElement
  */
 export default function Modal({ show, onClose, title, children }: Props): JSX.Element {
   const nodeRef = useRef<HTMLDivElement | null>(null);
@@ -26,7 +30,8 @@ export default function Modal({ show, onClose, title, children }: Props): JSX.El
   useEffect(() => {
     /**
      *
-     * @param e
+     * @param {KeyboardEvent} e Keyboard Event
+     * @returns {void} void
      */
     const handleKeyDown = (e: KeyboardEvent): void => onEscapeKeyDown(e, onClose);
     document.body.addEventListener("keydown", handleKeyDown);
