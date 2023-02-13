@@ -1,6 +1,6 @@
-import rendererSettings from "../three/settings/renderer.settings";
-import sceneSettings from "../three/settings/scene.settings";
-import cameraSettings from "../three/settings/camera.settings";
+import rendererSettings from "../legacy_three/settings/renderer.settings";
+import sceneSettings from "../legacy_three/settings/scene.settings";
+import cameraSettings from "../legacy_three/settings/camera.settings";
 
 /**
  * Provides renderer function of the app

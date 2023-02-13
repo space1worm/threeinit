@@ -1,6 +1,5 @@
 // Components
 import Navigation from "./components/navigation/Navigation.component";
-import ThreeCanvas from "./components/ThreeCanvas.component";
 
 import SettingsModal from "./components/modal/modals/Settings.modal";
 import { useState } from "react";
@@ -16,7 +15,6 @@ function App(): JSX.Element {
   return (
     <div className="bg-black h-screen">
       <Navigation />
-      <ThreeCanvas />
       <SettingsModal show={show} onClose={(): void => setShow(!show)} />
     </div>
   );

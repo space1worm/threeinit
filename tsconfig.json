@@ -23,11 +23,11 @@
   },
   "include": [
     "src",
-    "src/custom.d.ts",
-    "./vite.config.ts",
-    "./tailwind.config.cjs",
-    "./postcss.config.cjs",
-    "src/test"
+    "src/test",
+    "globals.d.ts",
+    "vite.config.ts",
+    "tailwind.config.cjs",
+    "postcss.config.cjs"
   ],
   "references": [
     {
