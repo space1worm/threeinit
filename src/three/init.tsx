@@ -14,7 +14,7 @@ import InnerDetector from "./detector-parts/InnerDetector.three";
  */
 export default function Scene(): JSX.Element {
   return (
-    <Canvas>
+    <Canvas gl={{ antialias: false, pixelRatio: window.devicePixelRatio * 0.5 }}>
       <Lights />
       <Camera />
       <Fog />
