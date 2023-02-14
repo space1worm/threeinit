@@ -6,7 +6,8 @@ Command: npx gltfjsx@6.1.4 /Users/iraklikverenchkhiladze/Desktop/threeinit/src/m
 import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
-import { ApplyDefaults } from "../utils/apply.util";
+
+import applyDefaultsToModel from "../utils/applyDefaultsToModel.utils";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -24,9 +25,10 @@ type GLTFResult = GLTF & {
  * @param props
  */
 export function SctBar3(props: JSX.IntrinsicElements["group"]): JSX.Element {
-  const { nodes, materials } = useGLTF("/models/SCT-BAR-cut3-transformed.glb") as GLTFResult;
+  const { nodes, materials } = useGLTF(`${import.meta.env.VITE_MODELS_PROVIDER}/SCT-BAR-cut3.glb`) as GLTFResult;
 
-  ApplyDefaults(materials);
+  applyDefaultsToModel(materials);
+
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Mesh_2011.geometry} material={materials["Material_2.022"]} />
@@ -35,4 +37,4 @@ export function SctBar3(props: JSX.IntrinsicElements["group"]): JSX.Element {
   );
 }
 
-useGLTF.preload("/models/SCT-BAR-cut3-transformed.glb");
+useGLTF.preload(`${import.meta.env.VITE_MODELS_PROVIDER}/SCT-BAR-cut3.glb`);

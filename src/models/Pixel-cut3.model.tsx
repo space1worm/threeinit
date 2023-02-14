@@ -5,8 +5,9 @@ Command: npx gltfjsx@6.1.4 /Users/iraklikverenchkhiladze/Desktop/threeinit/src/m
 
 import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
-import { ApplyDefaults } from "../utils/apply.util";
 import { GLTF } from "three-stdlib";
+
+import applyDefaultsToModel from "../utils/applyDefaultsToModel.utils";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -30,9 +31,9 @@ type GLTFResult = GLTF & {
  * @param props
  */
 export function PixelCut3(props: JSX.IntrinsicElements["group"]): JSX.Element {
-  const { nodes, materials } = useGLTF("/models/Pixel-cut3-transformed.glb") as GLTFResult;
+  const { nodes, materials } = useGLTF(`${import.meta.env.VITE_MODELS_PROVIDER}/Pixel-cut3.glb`) as GLTFResult;
 
-  ApplyDefaults(materials);
+  applyDefaultsToModel(materials);
 
   return (
     <group {...props} dispose={null}>
@@ -45,4 +46,4 @@ export function PixelCut3(props: JSX.IntrinsicElements["group"]): JSX.Element {
   );
 }
 
-useGLTF.preload("/models/Pixel-cut3-transformed.glb");
+useGLTF.preload(`${import.meta.env.VITE_MODELS_PROVIDER}/Pixel-cut3.glb`);

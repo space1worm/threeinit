@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import Draggable from "react-draggable";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
-import { onEscapeKeyDown } from "../../utils/userEvents";
+import { onEscapeKeyDown } from "../../utils/userEvents.utils";
 
 interface Props {
   show: boolean;

@@ -7,6 +7,8 @@ import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 
+import applyDefaultsToModel from "../utils/applyDefaultsToModel.utils";
+
 type GLTFResult = GLTF & {
   nodes: {
     Mesh_1008: THREE.Mesh;
@@ -18,16 +20,14 @@ type GLTFResult = GLTF & {
   };
 };
 
-import { ApplyDefaults } from "../utils/apply.util";
-
 /**
  *
  * @param props
  */
 export function TrtBar3(props: JSX.IntrinsicElements["group"]): JSX.Element {
-  const { nodes, materials } = useGLTF("/models/TRT-BAR-cut3-transformed.glb") as GLTFResult;
+  const { nodes, materials } = useGLTF(`${import.meta.env.VITE_MODELS_PROVIDER}/TRT-BAR-cut3.glb`) as GLTFResult;
 
-  ApplyDefaults(materials);
+  applyDefaultsToModel(materials);
 
   return (
     <group {...props} dispose={null}>
@@ -37,4 +37,4 @@ export function TrtBar3(props: JSX.IntrinsicElements["group"]): JSX.Element {
   );
 }
 
-useGLTF.preload("/models/TRT-BAR-cut3-transformed.glb");
+useGLTF.preload(`${import.meta.env.VITE_MODELS_PROVIDER}/TRT-BAR-cut3.glb`);

@@ -6,6 +6,7 @@ Command: npx gltfjsx@6.1.4 /Users/iraklikverenchkhiladze/Desktop/threeinit/src/m
 import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
+import applyDefaultsToModel from "../utils/applyDefaultsToModel.utils";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -18,15 +19,13 @@ type GLTFResult = GLTF & {
   };
 };
 
-import { ApplyDefaults } from "../utils/apply.util";
-
 /**
  *
  * @param props
  */
 export function TrtSideA3(props: JSX.IntrinsicElements["group"]): JSX.Element {
-  const { nodes, materials } = useGLTF("/models/TRT-SideA-cut3-transformed.glb") as GLTFResult;
-  ApplyDefaults(materials);
+  const { nodes, materials } = useGLTF(`${import.meta.env.VITE_MODELS_PROVIDER}/TRT-SideA-cut3.glb`) as GLTFResult;
+  applyDefaultsToModel(materials);
 
   return (
     <group {...props} dispose={null}>
@@ -36,4 +35,4 @@ export function TrtSideA3(props: JSX.IntrinsicElements["group"]): JSX.Element {
   );
 }
 
-useGLTF.preload("/models/TRT-SideA-cut3-transformed.glb");
+useGLTF.preload(`${import.meta.env.VITE_MODELS_PROVIDER}/TRT-SideA-cut3.glb`);

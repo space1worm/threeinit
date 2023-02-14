@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 
-import { ApplyDefaults } from "../utils/apply.util";
+import applyDefaultsToModel from "../utils/applyDefaultsToModel.utils";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -20,8 +20,8 @@ type GLTFResult = GLTF & {
  * @param props
  */
 export function TrtSideC3(props: JSX.IntrinsicElements["group"]): JSX.Element {
-  const { nodes, materials } = useGLTF("/models/TRT-SideC-cut3-transformed.glb") as GLTFResult;
-  ApplyDefaults(materials);
+  const { nodes, materials } = useGLTF(`${import.meta.env.VITE_MODELS_PROVIDER}/TRT-SideC-cut3.glb`) as GLTFResult;
+  applyDefaultsToModel(materials);
 
   return (
     <group {...props} dispose={null}>
@@ -31,4 +31,4 @@ export function TrtSideC3(props: JSX.IntrinsicElements["group"]): JSX.Element {
   );
 }
 
-useGLTF.preload("/models/TRT-SideC-cut3-transformed.glb");
+useGLTF.preload(`${import.meta.env.VITE_MODELS_PROVIDER}/TRT-SideC-cut3.glb`);

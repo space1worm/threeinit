@@ -59,7 +59,7 @@
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
-      "tsc --skipLibCheck --esModuleInterop --noEmit --jsx react-jsx",
+      "bash -c tsc",
       "eslint",
       "vitest related --run",
       "prettier --write"
