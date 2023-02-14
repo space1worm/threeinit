@@ -43,7 +43,8 @@
         "react",
         "@typescript-eslint",
         "import",
-        "jsdoc"
+        "jsdoc",
+        "eslint-plugin-jsx-a11y"
     ],
     "rules": {
         "react/jsx-uses-react": "off",
@@ -63,5 +64,34 @@
                 }
             }
         ]
-    }
+    },
+    "overrides": [
+        {
+            "files": [
+                "**/*.model.tsx"
+            ],
+            "rules": {
+                "react/no-unknown-property": "off",
+                "import/named": "off"
+            }
+        },
+        {
+            "files": [
+                "**.three.tsx"
+            ],
+            "rules": {
+                "react/no-unknown-property": [
+                    "error",
+                    {
+                        "ignore": [
+                            "castShadow",
+                            "position",
+                            "intensity",
+                            "attach"
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
 }

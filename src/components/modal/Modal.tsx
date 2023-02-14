@@ -42,7 +42,7 @@ export default function Modal({ show, onClose, title, children }: Props): JSX.El
 
   return createPortal(
     <Draggable nodeRef={nodeRef} bounds="parent" handle=".handle">
-      <div ref={nodeRef} className="modal text-white">
+      <div ref={nodeRef} className="modal text-white z-50">
         <div className="w-full">
           {/* do not remove class 'handle' since it's used by draggable element, which means that drag events will only triggered on elements which will have handle class */}
           <div className="handle shadow-md p-2 flex justify-between items-center cursor-move">
