@@ -25,7 +25,7 @@ type GLTFResult = GLTF & {
  * @param props
  */
 export function SctBar3(props: JSX.IntrinsicElements["group"]): JSX.Element {
-  const { nodes, materials } = useGLTF(`${import.meta.env.VITE_MODELS_PROVIDER}/SCT-BAR-cut3.glb`) as GLTFResult;
+  const { nodes, materials } = useGLTF(`${import.meta.env.VITE_MODELS_PROVIDER}/sct-bar-cut3.glb`) as GLTFResult;
 
   applyDefaultsToModel(materials);
 
@@ -36,5 +36,3 @@ export function SctBar3(props: JSX.IntrinsicElements["group"]): JSX.Element {
     </group>
   );
 }
-
-useGLTF.preload(`${import.meta.env.VITE_MODELS_PROVIDER}/SCT-BAR-cut3.glb`);

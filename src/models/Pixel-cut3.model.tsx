@@ -31,7 +31,7 @@ type GLTFResult = GLTF & {
  * @param props
  */
 export function PixelCut3(props: JSX.IntrinsicElements["group"]): JSX.Element {
-  const { nodes, materials } = useGLTF(`${import.meta.env.VITE_MODELS_PROVIDER}/Pixel-cut3.glb`) as GLTFResult;
+  const { nodes, materials } = useGLTF(`${import.meta.env.VITE_MODELS_PROVIDER}/pixel-cut3.glb`) as GLTFResult;
 
   applyDefaultsToModel(materials);
 
@@ -45,5 +45,3 @@ export function PixelCut3(props: JSX.IntrinsicElements["group"]): JSX.Element {
     </group>
   );
 }
-
-useGLTF.preload(`${import.meta.env.VITE_MODELS_PROVIDER}/Pixel-cut3.glb`);

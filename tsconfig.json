@@ -29,6 +29,9 @@
     "tailwind.config.cjs",
     "postcss.config.cjs"
   ],
+  "exclude": [
+    "./models/transform.cjs"
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

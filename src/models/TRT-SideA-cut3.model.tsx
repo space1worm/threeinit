@@ -24,7 +24,7 @@ type GLTFResult = GLTF & {
  * @param props
  */
 export function TrtSideA3(props: JSX.IntrinsicElements["group"]): JSX.Element {
-  const { nodes, materials } = useGLTF(`${import.meta.env.VITE_MODELS_PROVIDER}/TRT-SideA-cut3.glb`) as GLTFResult;
+  const { nodes, materials } = useGLTF(`${import.meta.env.VITE_MODELS_PROVIDER}/trt-sidea-cut3.glb`) as GLTFResult;
   applyDefaultsToModel(materials);
 
   return (
@@ -34,5 +34,3 @@ export function TrtSideA3(props: JSX.IntrinsicElements["group"]): JSX.Element {
     </group>
   );
 }
-
-useGLTF.preload(`${import.meta.env.VITE_MODELS_PROVIDER}/TRT-SideA-cut3.glb`);

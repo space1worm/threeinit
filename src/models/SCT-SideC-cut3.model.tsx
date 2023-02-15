@@ -30,7 +30,7 @@ type GLTFResult = GLTF & {
  * @param props
  */
 export function SctSideC3(props: JSX.IntrinsicElements["group"]): JSX.Element {
-  const { nodes, materials } = useGLTF(`${import.meta.env.VITE_MODELS_PROVIDER}/SCT-SideC-cut3.glb`) as GLTFResult;
+  const { nodes, materials } = useGLTF(`${import.meta.env.VITE_MODELS_PROVIDER}/sct-sidec-cut3.glb`) as GLTFResult;
 
   applyDefaultsToModel(materials);
 
@@ -44,5 +44,3 @@ export function SctSideC3(props: JSX.IntrinsicElements["group"]): JSX.Element {
     </group>
   );
 }
-
-useGLTF.preload(`${import.meta.env.VITE_MODELS_PROVIDER}/SCT-SideC-cut3.glb`);

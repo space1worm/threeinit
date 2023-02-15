@@ -21,7 +21,7 @@ export default function Lights(): JSX.Element {
   return (
     <>
       <ambientLight castShadow={false} position={[0, 0, 0]} intensity={0.6} color="white" />
-      <directionalLight castShadow={false} ref={light} intensity={0.45} color="white" />;
+      <directionalLight castShadow={false} ref={light} intensity={0.45} color="white" />
     </>
   );
 }
