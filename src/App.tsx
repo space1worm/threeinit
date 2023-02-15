@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Components
 import Navigation from "./components/navigation/Navigation.component";
@@ -6,6 +6,7 @@ import SettingsModal from "./components/modal/modals/Settings.modal";
 
 // Three
 import Scene from "./three/init";
+import preLoadAllModel from "./utils/preloadModels";
 
 /**
  * Entry point of the app
@@ -14,6 +15,10 @@ import Scene from "./three/init";
  */
 function App(): JSX.Element {
   const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    preLoadAllModel();
+  }, []);
 
   return (
     <div className="h-screen">

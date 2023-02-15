@@ -26,10 +26,33 @@ import { TrtSideA3 } from "../../models/TRT-SideA-cut3.model";
 import { TrtSideC3 } from "../../models/TRT-SideC-cut3.model";
 import { ServZ0Sec5Cut3 } from "../../models/Serv-Z0-Sec5-cut3.model";
 import { ServZ0Sec7Cut3 } from "../../models/Serv-Z0-Sec7-cut3.model";
+import { BarrelToroidCut3 } from "../../models/Barrel-Toroid-cut3.model";
+import { EndCapToroidSideACut3 } from "../../models/End-Cap-Toroid-SideA-cut3.model";
+import { TowerTurretSideACut3 } from "../../models/Tower-Turret-SideA-cut3.model";
+import { TowerTurretSideCCut3 } from "../../models/Tower-Turret-SideC-cut3.model";
+import { EndCapToroidSideCCut3 } from "../../models/End-Cap-Toroid-SideC-cut3.model";
+
 /**
  *
  */
-export default function Detector(): JSX.Element {
+function InnerDetector(): JSX.Element {
+  return (
+    <>
+      <PixelCut3 />
+      <SctBar3 />
+      <SctSideA3 />
+      <SctSideC3 />
+      <TrtBar3 />
+      <TrtSideA3 />
+      <TrtSideC3 />
+    </>
+  );
+}
+
+/**
+ *
+ */
+function Services(): JSX.Element {
   return (
     <>
       <ServZ0Sec7Cut3 />
@@ -53,13 +76,38 @@ export default function Detector(): JSX.Element {
       <LarHecSideCCut3 />
       <LarEmecSideACut3 />
       <LarEmecSideCCut3 />
-      <PixelCut3 />
-      <SctBar3 />
-      <SctSideA3 />
-      <SctSideC3 />
-      <TrtBar3 />
-      <TrtSideA3 />
-      <TrtSideC3 />
+    </>
+  );
+}
+
+/**
+ *
+ */
+function MagnetSystems(): JSX.Element {
+  return (
+    <>
+      <BarrelToroidCut3 />
+      <TowerTurretSideCCut3 />
+      <TowerTurretSideACut3 />
+      <EndCapToroidSideACut3 />
+      <EndCapToroidSideCCut3 />
+    </>
+  );
+}
+
+/**
+ *
+ */
+export default function Detector(): JSX.Element {
+  return (
+    <>
+      {false && (
+        <>
+          <MagnetSystems />
+          <Services />
+        </>
+      )}
+      <InnerDetector />
     </>
   );
 }

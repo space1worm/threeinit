@@ -7,6 +7,7 @@ import * as THREE from "three";
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
+import { modelsUrl } from "../utils/preloadModels";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -29,9 +30,8 @@ type GLTFResult = GLTF & {
  *
  * @param props
  */
-export function Model(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF("/End-Cap-Toroid-SideC-cut3-transformed.glb") as GLTFResult;
-
+export function EndCapToroidSideCCut3(props: JSX.IntrinsicElements["group"]) {
+  const { nodes, materials } = useGLTF(`${modelsUrl}/end-cap-toroid-sidec-cut3.glb`) as GLTFResult;
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -62,5 +62,3 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
     </group>
   );
 }
-
-useGLTF.preload("/End-Cap-Toroid-SideC-cut3-transformed.glb");
