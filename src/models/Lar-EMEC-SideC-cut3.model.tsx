@@ -5,6 +5,7 @@ Command: npx gltfjsx@6.1.4 /Users/nzurashv/Desktop/work/tracercentral/resources/
 
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
+import { modelsUrl } from "../utils/preloadModels";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -22,8 +23,8 @@ type GLTFResult = GLTF & {
  *
  * @param props
  */
-export function Model(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF("/Lar-EMEC-SideC-cut3-transformed.glb") as GLTFResult;
+export function LarEmecSideCCut3(props: JSX.IntrinsicElements["group"]) {
+  const { nodes, materials } = useGLTF(`${modelsUrl}/lar-emec-sidec-cut3.glb`) as GLTFResult;
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Mesh_1003.geometry} material={materials["Material_1.002"]} />
@@ -32,5 +33,3 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
     </group>
   );
 }
-
-useGLTF.preload("/Lar-EMEC-SideC-cut3-transformed.glb");

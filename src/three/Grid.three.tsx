@@ -13,7 +13,7 @@ export default function CustomGrid(): JSX.Element {
       cellThickness={0.6}
       sectionSize={3.3}
       sectionThickness={1.5}
-      fadeDistance={30}
+      fadeDistance={50}
     />
   );
 }

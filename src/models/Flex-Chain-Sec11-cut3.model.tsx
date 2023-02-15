@@ -7,6 +7,7 @@ import * as THREE from "three";
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
+import { modelsUrl } from "../utils/preloadModels";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -29,8 +30,8 @@ type GLTFResult = GLTF & {
  *
  * @param props
  */
-export function Model(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF("/Flex-Chain-Sec11-cut3-transformed.glb") as GLTFResult;
+export function FlexChainSec11Cut3(props: JSX.IntrinsicElements["group"]) {
+  const { nodes, materials } = useGLTF(`${modelsUrl}/flex-chain-sec11-cut3.glb`) as GLTFResult;
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes._000001F28AB8E270_IndexedFaceSet.geometry} material={materials._000001F28AB8E270} />

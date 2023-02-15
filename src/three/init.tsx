@@ -8,19 +8,19 @@ import CustomGrid from "./Grid.three";
 import CustomOrbitControls from "./OrbitControls.three";
 import EnvironmentThree from "./Environment.three";
 
-import InnerDetector from "./detector-parts/InnerDetector.three";
+import Detector from "./detector-parts/Detector.three";
 
 /**
  *
  */
 export default function Scene(): JSX.Element {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<>Loading...</>}>
       <Canvas gl={{ pixelRatio: window.devicePixelRatio * 0.5 }}>
         <Lights />
         <Camera />
         <Fog />
-        <InnerDetector />
+        <Detector />
         <CustomGrid />
         <CustomOrbitControls />
         <EnvironmentThree />
