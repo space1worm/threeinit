@@ -101,12 +101,8 @@ function MagnetSystems(): JSX.Element {
 export default function Detector(): JSX.Element {
   return (
     <>
-      {false && (
-        <>
-          <MagnetSystems />
-          <Services />
-        </>
-      )}
+      <MagnetSystems />
+      <Services />
       <InnerDetector />
     </>
   );
